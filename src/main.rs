@@ -2,7 +2,16 @@ fn main() {
     // 测试数据类型
     //test_var();
     //test_scalar();
-    test_compound_types();
+    //test_compound_types();
+    let  result = test_fn(23333,true);
+    println!("fn comeback {}",result);
+}
+
+fn test_fn(x:i32,y:bool)-> i32{
+    if y {
+        println!("{}",x);
+    }
+    return 6666;
 }
 
 
