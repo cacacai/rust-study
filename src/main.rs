@@ -5,8 +5,68 @@ fn main() {
     //test_compound_types();
     //let  result = test_fn(23333,true);
     //println!("fn comeback {}",result);
-    test_control_flow();
+    //test_control_flow();
+    test_fn_index();
 }
+
+// 引用规则
+// 在作用域之内，只能拥有下面的一个场景 1、一个可变引用&mut 2、任意数量的不可变引用&
+// 引用必须总是有效的，不能返回指向内存已经释放的指针
+
+fn test_fn_index() {
+    let mut  test = String::from("test");
+    //let (str, len) = test_fn2(test);
+    //println!("{} length {}",str,len);
+    //println!("{}",test_fn_ref(&test));
+    //println!("{}",test_fn_change_ref(&mut test));
+    //test_multiple_ref();
+    test_ref_change_nochange();
+}
+//不能在拥有不可变变量同时，拥有可变变量
+fn test_ref_change_nochange(){
+    let mut s = String::from("caijiasheng");
+    let r1 = &s;
+    let r2 = &s;
+    let r3 = &mut s;
+    println!("{} {} {}",r1,r2,r3);
+}
+
+fn test_multiple_ref(){
+    let mut s = String::from("caijiasheng");
+    {
+        let r1 = &mut s;
+    }
+    let r2 = &mut s;
+    // let r3 = &mut s; 不允许多次使用引用可变变量
+    // println!(" r2 {} \n r3 {}",r2,r3);
+
+}
+
+//测试变量的引用 使用&符号，而且是在变量类型上不是在变量上，这里传递的是一个指针，使用了同一个内存数据，但只是借用的，所以在作用域结束后不会被释放掉
+// 对于通过指针借用（引用）的内存数据，不允许修改，只能读取
+fn test_fn_ref(str:&String) -> usize{
+    return str.len();
+}
+
+//可变引用
+// 需要变量定义、函数定义、还有函数使用入口都要加上&mut 可变变量引用
+// 一个作用域内只允许定义一个 &mut参数，
+fn test_fn_change_ref (str:&mut String) -> usize {
+    //同时字符串不允许值
+    str.push_str(" caijiasheng");// 字符串连接
+    return str.len();
+}
+
+
+// 测试函数返回元组，变量move场景
+fn test_fn2(s: String) -> (String, usize) {
+    let len = s.len();
+    // return (s, s.len()); 不能直接这么使用，因为s已经move到元组中，不能继续调用其属性
+    return (s, len);
+}
+
+
+
 // 测试使用控制流
 fn test_control_flow() {
     let num = 3;
