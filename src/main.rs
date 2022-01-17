@@ -7,9 +7,45 @@ fn main() {
     //println!("fn comeback {}",result);
     //test_control_flow();
     //test_fn_index();
-    test_slice();
+    //test_slice();
 }
 
+
+fn test_struct() {
+    // 结构体
+    let mut user1 = build_user(String::from("caijiasheng"),String::from("jiashengcai97@gmail.com"));
+    user1.email = String::from("2445365071@qq.com");
+    println!("{}",&user1.email);
+
+    let user2 = User {
+        username: String::from("caijiasheng2"),
+        email: String::from("jiashengcai972@gmail.com"),
+        ..user1//使用user1对象来补齐剩余的的参数
+    };
+
+    //元组结构体
+    struct Color(i32,i32,i32);
+    struct Point(i32,i32,i32);
+    let black = Color(0,0,0);
+    let origin = Point(0,,0,0);
+
+
+}
+
+fn build_user(username:String,email:String) -> User{
+    User {
+        username,//username: user, 简写
+        email,//email: mail,
+        sign_in_count: 1,
+        active: true
+    }
+}
+struct User{
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool
+}
 
 //slice 切片
 fn test_slice( ) {
