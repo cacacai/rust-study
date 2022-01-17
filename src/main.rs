@@ -6,7 +6,30 @@ fn main() {
     //let  result = test_fn(23333,true);
     //println!("fn comeback {}",result);
     //test_control_flow();
-    test_fn_index();
+    //test_fn_index();
+    test_slice();
+}
+
+
+//slice 切片
+fn test_slice( ) {
+    let str = String::from("cai jiasheng");
+    let cai = &str[0..3];
+    let name = &str[3..];
+    //println!("{}  {}",cai,name);
+    let result = slice_fist_world(&str);
+    println!("{}",result);
+    //str.clear();
+}
+
+fn slice_fist_world (s:&str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+    &s[..]
 }
 
 // 引用规则
@@ -27,8 +50,8 @@ fn test_ref_change_nochange(){
     let mut s = String::from("caijiasheng");
     let r1 = &s;
     let r2 = &s;
-    let r3 = &mut s;
-    println!("{} {} {}",r1,r2,r3);
+    //let r3 = &mut s;
+    //println!("{} {} {}",r1,r2,r3);
 }
 
 fn test_multiple_ref(){
