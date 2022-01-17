@@ -1,3 +1,5 @@
+
+
 fn main() {
     //let width = 30;
     //     let height = 50;
@@ -8,10 +10,14 @@ fn main() {
     let rect1 = Rectangle{
         width:30,height:20
     };
-    println!("area {}",area_struct(&rect1));
+    //println!("area {}",area_struct(&rect1));
+    println!("area {:?}",rect1);
+
 
 
 }
+//添加注解为了直接调试，打印对象
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32
