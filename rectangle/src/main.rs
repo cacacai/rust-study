@@ -13,6 +13,14 @@ impl Rectangle {
     fn can_hold(&self,other:&Rectangle) -> bool {
         self.width >other.width && self.height > other.height
     }
+
+}
+//多个imp块
+impl Rectangle {
+    //关联函数,没有使用self
+    fn square (size:u32) -> Rectangle {
+        Rectangle { width: size, height: size }
+    }
 }
 
 fn main() {
@@ -22,18 +30,17 @@ fn main() {
     //let rect1 = (30, 50);
     //println!("area {}",area_mate(rect1));
 
-    let rect1 = Rectangle { width: 30, height: 20 };
+    //let rect1 = Rectangle { width: 30, height: 20 };
     //println!("area {}",area_struct(&rect1));
     //println!("area {:?}",rect1);
     //println!("area {}",rect1.area());
-    let rect1 = Rectangle { width: 30, height: 20 };
-    let rect2 = Rectangle { width: 40, height: 20 };
-    let rect3 = Rectangle { width: 50, height: 60 };
-    println!("rect1 > rect2? {}", rect1.can_hold(&rect2));
-    println!("rect3 > rect2? {}", rect3.can_hold(&rect2));
-
-
-
+    // let rect1 = Rectangle { width: 30, height: 20 };
+    // let rect2 = Rectangle { width: 40, height: 20 };
+    // let rect3 = Rectangle { width: 50, height: 60 };
+    // println!("rect1 > rect2? {}", rect1.can_hold(&rect2));
+    // println!("rect3 > rect2? {}", rect3.can_hold(&rect2));
+    let rect1 = Rectangle::square(23);
+    println!("area {:?}",rect1);
 }
 
 
